@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "WorkBuddy 网关",
+    "description": "局域网 WorkBuddy 网关的一站式插件：注册 workbuddy 模型提供商并把默认模型设为 DeepSeek V4.1 Flash；提供四个 agent 工具（写入路由配置、探测网关、免费模型对话、免费模型改写提示词）；并在左侧栏底部自己渲染「积分 / 余额 / 峰谷」三行（同一套样式、顺序固定，30 秒/60 秒刷新，点击立即刷新）。网关注册与积分查询共用 WORKBUDDY_API_KEY，余额来自宿主 DeepSeek 账号服务，仅内网可用。"
+  }
+}

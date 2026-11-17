@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "WorkBuddy gateway",
+    "description": "All-in-one plugin for the LAN WorkBuddy gateway: registers the workbuddy model provider and sets DeepSeek V4.1 Flash as the default model; provides four agent tools (apply route config, probe gateway, free-model chat, free-model prompt rewrite); and renders its own three-row sidebar footer — credits / balance / peak window — with one shared style and a fixed order (30s and 60s refresh, click to refresh now). The route and the credit query share WORKBUDDY_API_KEY; the balance comes from the host DeepSeek account service; LAN only."
+  }
+}

@@ -1,0 +1,148 @@
+# 安装前请先改下面 llm-pi-ai.providers.workbuddy.baseURL 为你的网关地址。
+# 0) 本包宿主半区：五个 WorkBuddy 工具 + 两个查询接口 + 三档分派规则。
+- insert:
+    - id: workbuddy
+      name: dsh-workbuddy
+# 1) WorkBuddy 网关 provider 路由（11 个模型，名字带积分倍率）。
+- id: llm-pi-ai
+  name: "@deepseek-ai/dsh-llm-pi-ai"
+  config:
+    providers:
+      workbuddy:
+        displayName: 局域网 WorkBuddy
+        apiKeyEnv: WORKBUDDY_API_KEY
+        api: openai-completions
+        baseURL: http://127.0.0.1:8790/v1
+        compat:
+          thinkingFormat: deepseek
+          supportsReasoningEffort: true
+        retryPolicy:
+          mode: normal
+          maxRetries: 2
+        models:
+          - id: deepseek-v4.1-flash
+            name: DeepSeek V4.1 Flash ·0.11
+            contextWindow: 1000000
+            maxTokens: 128000
+            input: [text, image]
+            reasoningEfforts:
+              minimal: minimal
+              low: low
+              medium: medium
+              high: high
+              xhigh: xhigh
+              max: max
+          - id: deepseek-v4-pro
+            name: DeepSeek V4 Pro ·0.51
+            contextWindow: 1000000
+            maxTokens: 128000
+            input: [text, image]
+            reasoningEfforts:
+              minimal: minimal
+              low: low
+              medium: medium
+              high: high
+              xhigh: xhigh
+              max: max
+          - id: hy4flash-free
+            name: Hy4 Flash 免费
+            contextWindow: 960000
+            maxTokens: 64000
+            input: [text, image]
+            reasoningEfforts:
+              low: low
+              medium: medium
+              high: high
+          - id: hy4flash
+            name: Hy4 Flash ·0.03
+            contextWindow: 960000
+            maxTokens: 64000
+            input: [text, image]
+            reasoningEfforts:
+              low: low
+              medium: medium
+              high: high
+          - id: glm-5.3-flash
+            name: GLM 5.3 Flash ·0.08
+            contextWindow: 1000000
+            maxTokens: 131072
+            input: [text, image]
+            reasoningEfforts:
+              minimal: minimal
+              low: low
+              medium: medium
+              high: high
+              xhigh: xhigh
+              max: max
+          - id: glm-5.3
+            name: GLM 5.3 ·0.69
+            contextWindow: 1000000
+            maxTokens: 64000
+            input: [text, image]
+            reasoningEfforts:
+              minimal: minimal
+              low: low
+              medium: medium
+              high: high
+              xhigh: xhigh
+              max: max
+          - id: hunyuan-2.0-thinking
+            name: Hunyuan 2.0 ·0.04
+            contextWindow: 128000
+            maxTokens: 24000
+            input: [text]
+            reasoningEfforts:
+              minimal: minimal
+              low: low
+              medium: medium
+              high: high
+              xhigh: xhigh
+              max: max
+          - id: step-5-preview
+            name: Step 5 Preview ·0.33
+            contextWindow: 1000000
+            maxTokens: 64000
+            input: [text, image]
+            reasoningEfforts:
+              minimal: minimal
+              low: low
+              medium: medium
+              high: high
+              xhigh: xhigh
+              max: max
+          - id: mimo-v2.6-pro
+            name: MiMo V2.6 Pro ·0.13
+            contextWindow: 1000000
+            maxTokens: 128000
+            input: [text, image]
+            reasoningEfforts:
+              low: low
+              medium: medium
+              high: high
+          - id: kimi-k3.1-pro
+            name: Kimi K3.1 Pro ·0.97
+            contextWindow: 1000000
+            maxTokens: 32000
+            input: [text, image]
+            reasoningEfforts:
+              low: low
+              medium: medium
+              high: high
+          - id: space-bunny
+            name: Space Bunny ·0.08
+            contextWindow: 1000000
+            maxTokens: 128000
+            input: [text, image]
+            reasoningEfforts:
+              minimal: minimal
+              low: low
+              medium: medium
+              high: high
+              xhigh: xhigh
+              max: max
+- id: agent-default-model
+  name: "@deepseek-ai/dsh-agent-default-model"
+  config:
+    provider: workbuddy
+    model: deepseek-v4.1-flash
+    reasoningEffort: high
